@@ -26,7 +26,7 @@ if search_term:
 
         # Create columns for displaying books side by side
         num_columns = 2  # You can adjust this number as needed
-        columns = st.beta_columns(num_columns)
+        columns = st.columns(num_columns)
 
         # Display book thumbnails and titles side by side
         for idx, i in enumerate(top_10_indices):
