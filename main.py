@@ -24,9 +24,14 @@ if search_term:
     if len(top_10_indices) > 0:
         st.subheader("Top 10 Matching Books")
 
-        # Display book thumbnails and titles with a smaller image size
-        for i in top_10_indices:
-            st.image(data.iloc[i]['thumbnail'], caption=data.iloc[i]['title'], use_column_width=False, width=100)
+        # Create columns for displaying books side by side
+        num_columns = 2  # You can adjust this number as needed
+        columns = st.beta_columns(num_columns)
+
+        # Display book thumbnails and titles side by side
+        for idx, i in enumerate(top_10_indices):
+            with columns[idx % num_columns]:
+                st.image(data.iloc[i]['thumbnail'], caption=data.iloc[i]['title'], use_column_width=False, width=100)
     else:
         st.warning("No books found matching your search term.")
 else:
